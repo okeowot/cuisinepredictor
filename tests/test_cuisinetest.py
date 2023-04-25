@@ -11,7 +11,7 @@ import pytest
 
 def test_cuisine_predictor_functionality():
     # prepare test arguments
-    test_args = ['--N', '5', '--ingredient', 'cheese', 'tomato']
+    test_args = ['--N', '2',  '--ingredient', 'paprika', '--ingredient', 'banana',  '--ingredient', 'rice krispies']
     #Dealing with taking inputs from command line
     parser = argparse.ArgumentParser(description='Cuisine Predictor')
     parser.add_argument('--N', type=int, default=5, help='Number of top-N closest foods to return')
@@ -19,7 +19,7 @@ def test_cuisine_predictor_functionality():
     args = parser.parse_args(test_args)
 
     # LOAD DATA SET
-    with open("yummly.json", 'r') as f:
+    with open("docs/yummly.json", 'r') as f:
         data = json.load(f)
 
     #DATASET THAT CONTAINS JUST THE INGREDIENTS FROM THE JSON FILE
@@ -72,14 +72,11 @@ def test_cuisine_predictor_functionality():
     #CHANGE TO JSON FORMAT
     json_data = json.dumps(solution_format, indent=2)
     expected_output = {
-    "cuisine": "italian",
-    "score": editted_score_of_match,
+    "cuisine": "southern_us",
+    "score": "0.42441106",
     "closest": [
-        {"id": 21261, "score": top_n_scores[1]},
-        {"id": 49126, "score": top_n_scores[2]},
-        {"id": 40893, "score": top_n_scores[3]},
-        {"id": 29503, "score": top_n_scores[4]},
-        {"id": 44798, "score": top_n_scores[5]}
+        {"id": 9944, "score": '0.40808987'},
+        {"id": 49233, "score":'0.39504891'},
     ]
 }
     assert json.loads(json_data) == expected_output

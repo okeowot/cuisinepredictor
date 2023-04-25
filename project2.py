@@ -14,7 +14,7 @@ parser.add_argument('--ingredient', nargs='+', action='append', help='List of in
 args = parser.parse_args()
 
     # LOAD DATA SET
-with open("yummly.json", 'r') as f:
+with open("docs/yummly.json", 'r') as f:
        data = json.load(f)
 
 #DATASET THAT CONTAINS JUST THE INGREDIENTS FROM THE JSON FILE
